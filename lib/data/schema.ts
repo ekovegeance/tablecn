@@ -11,3 +11,10 @@ export const taskSchema = z.object({
 })
 
 export type Task = z.infer<typeof taskSchema>
+
+export const postSchema = z.object({
+    id: z.string(),
+    title: z.string(),
+})
+
+export type Post = z.infer<typeof postSchema>

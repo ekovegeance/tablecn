@@ -26,6 +26,7 @@ async function getTasks() {
 
 export default async function TaskPage() {
   const tasks = await getTasks()
+  console.log(tasks)
 
   return (
       <>
