@@ -1,5 +1,5 @@
 "use client";
-import {ColumnDef, Row} from "@tanstack/react-table";
+import {ColumnDef} from "@tanstack/react-table";
 import {Checkbox} from "@/components/ui/checkbox";
 import {Post} from "@/lib/data/schema";
 import {DataTableColumnHeader} from "@/components/tablecn/data-table-column-header";
@@ -76,6 +76,6 @@ export const columns: ColumnDef<Post>[] = [
     },
     {
         id: "actions",
-        cell: ({row}) => <DataTableRowActions row={row}/>,
+        cell: ({row}) => <DataTableRowActions row={row as never}/>,
     }
 ]

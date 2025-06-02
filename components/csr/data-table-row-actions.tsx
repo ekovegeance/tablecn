@@ -20,7 +20,7 @@ interface DataTableRowActionsProps<TData> {
     row: Row<TData>
 }
 
-export function DataTableRowActions<TData>({row}: DataTableRowActionsProps<TData>) {
+export function DataTableRowActions<TData extends Row<unknown>>({row}: DataTableRowActionsProps<TData>) {
     const rowData = row.original
     const [editOpen, setEditOpen] = useState(false)
 
