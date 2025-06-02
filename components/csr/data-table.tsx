@@ -18,7 +18,7 @@ import {
 
 
 import { DataTablePagination } from "@/components/tablecn/data-table-pagination"
-import { DataTableToolbar } from "@/components/posts/data-table-toolbar"
+import { DataTableToolbar } from "@/components/csr/data-table-toolbar"
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table"
 
 interface DataTableProps<TData, TValue> {

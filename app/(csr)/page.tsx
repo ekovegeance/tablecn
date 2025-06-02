@@ -1,28 +1,25 @@
 import React from 'react';
 import {getPosts} from "@/lib/data/posts";
-import {DataTable} from "@/components/posts/data-table";
-import {columns} from "@/components/posts/columns";
-import {Button} from "@/components/ui/button";
+import {DataTable} from "@/components/csr/data-table";
+import {columns} from "@/components/csr/columns";
+import Link from "next/link";
 
-export default async function DummyjsonPage() {
+export default async function CSRPage() {
     const posts = await getPosts();
-    console.log(posts);
 
     return (
         <>
             <div className="h-full flex-1 flex-col space-y-8 p-8 md:flex">
                 <div className="flex items-center justify-between space-y-2">
                     <div>
-                        <h2 className="text-2xl font-bold tracking-tight">Welcome back!</h2>
+                        <h2 className="text-2xl font-bold tracking-tight">Client Side Rendering</h2>
                         <p className="text-muted-foreground">
-                            dummyjson.com is a free API for testing and prototyping. Here&apos;s a list of your posts!
+                            Example of a client-side rendered data table using dummyjson.com API. Here&apos;s a list of your posts!
                         </p>
+                        <Link href="https://ui.shadcn.com/docs/components/data-table">Shadcn/ui Data Table</Link>
                     </div>
                     <div className="flex items-center space-x-2">
                     </div>
-                </div>
-                <div className="flex justify-end">
-                    <Button className="w-fit">Add Post</Button>
                 </div>
                 <DataTable data={posts} columns={columns} />
             </div>

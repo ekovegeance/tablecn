@@ -1,9 +1,10 @@
 "use client";
-import {ColumnDef} from "@tanstack/react-table";
+import {ColumnDef, Row} from "@tanstack/react-table";
 import {Checkbox} from "@/components/ui/checkbox";
 import {Post} from "@/lib/data/schema";
 import {DataTableColumnHeader} from "@/components/tablecn/data-table-column-header";
-import {DataTableRowActions} from "@/components/posts/data-table-row-actions";
+import {DataTableRowActions} from "@/components/csr/data-table-row-actions";
+import {Badge} from "@/components/ui/badge";
 
 export const columns: ColumnDef<Post>[] = [
     {
@@ -51,6 +52,26 @@ export const columns: ColumnDef<Post>[] = [
             </span>
         ),
         enableSorting: true,
+        enableHiding: true,
+    },
+    {
+        accessorKey: "tags",
+        header: ({column}) => (
+            <DataTableColumnHeader column={column} title="Tags"/>
+        ),
+        cell: ({row}) => {
+            const tags: string[] = row.getValue("tags");
+            return (
+                <>
+                    {tags.map((tag) => (
+                        <Badge key={tag} className="me-1 mb-1">
+                            {tag}
+                        </Badge>
+                    ))}
+                </>
+            )
+        },
+        enableSorting: false,
         enableHiding: true,
     },
     {

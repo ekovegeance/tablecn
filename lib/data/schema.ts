@@ -13,8 +13,8 @@ export const taskSchema = z.object({
 export type Task = z.infer<typeof taskSchema>
 
 export const postSchema = z.object({
-    id: z.string(),
-    title: z.string(),
+    id: z.string().optional(),
+    title: z.string().min(2, "Title must be at least 2 characters long"),
+    tags: z.string().optional()
 })
-
 export type Post = z.infer<typeof postSchema>

@@ -1,9 +1,9 @@
 "use client"
 
-import { Row } from "@tanstack/react-table"
-import { MoreHorizontal } from "lucide-react"
+import {Row} from "@tanstack/react-table"
+import {MoreHorizontal} from "lucide-react"
 
-import { Button } from "@/components/ui/button"
+import {Button} from "@/components/ui/button"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -12,16 +12,20 @@ import {
     DropdownMenuShortcut,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import {DataTableRowEdit} from "@/components/csr/data-table-row-edit";
+import {useState} from "react";
 
 
 interface DataTableRowActionsProps<TData> {
     row: Row<TData>
 }
 
-export function DataTableRowActions<TData>({row,}: DataTableRowActionsProps<TData>) {
-    const id = row.getValue("id") as string | number
+export function DataTableRowActions<TData>({row}: DataTableRowActionsProps<TData>) {
+    const rowData = row.original
+    const [editOpen, setEditOpen] = useState(false)
 
     return (
+        <>
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button
@@ -33,15 +37,20 @@ export function DataTableRowActions<TData>({row,}: DataTableRowActionsProps<TDat
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-[160px]">
-                <DropdownMenuItem>Edit</DropdownMenuItem>
-                <DropdownMenuItem>Make a copy</DropdownMenuItem>
-                <DropdownMenuItem>Favorite</DropdownMenuItem>
+                <DropdownMenuItem>Show</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setEditOpen(true)}>Edit</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                    {id} Delete
+                <DropdownMenuItem className="text-destructive focus:text-destructive focus:bg-destructive/10">
+                    Delete
                     <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
+            <DataTableRowEdit
+                open={editOpen}
+                onOpenChange={setEditOpen}
+                rowData={ rowData }
+            />
+        </>
     )
 }
