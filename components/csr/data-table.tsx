@@ -3,7 +3,7 @@
 import * as React from "react"
 import {
     ColumnDef,
-    ColumnFiltersState,
+    // ColumnFiltersState,
     SortingState,
     VisibilityState,
     flexRender,
@@ -30,9 +30,7 @@ export function DataTable<TData, TValue>({columns, data,}: DataTableProps<TData,
     const [rowSelection, setRowSelection] = React.useState({})
     const [columnVisibility, setColumnVisibility] =
         React.useState<VisibilityState>({})
-    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-        []
-    )
+    // const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
     const [sorting, setSorting] = React.useState<SortingState>([])
 
     const table = useReactTable({
@@ -42,12 +40,12 @@ export function DataTable<TData, TValue>({columns, data,}: DataTableProps<TData,
             sorting,
             columnVisibility,
             rowSelection,
-            columnFilters,
+            // columnFilters,
         },
         enableRowSelection: true,
         onRowSelectionChange: setRowSelection,
         onSortingChange: setSorting,
-        onColumnFiltersChange: setColumnFilters,
+        // onColumnFiltersChange: setColumnFilters,
         onColumnVisibilityChange: setColumnVisibility,
         getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
@@ -56,6 +54,7 @@ export function DataTable<TData, TValue>({columns, data,}: DataTableProps<TData,
         getFacetedRowModel: getFacetedRowModel(),
         getFacetedUniqueValues: getFacetedUniqueValues(),
     })
+
 
     return (
         <div className="space-y-4">
