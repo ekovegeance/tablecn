@@ -9,7 +9,6 @@ interface DataTableDownloadRowsProps<TData> {
     fileName?: string
 }
 
-
 function convertToCSV<TData>(data: TData[]): string {
     if (data.length === 0) {
         return ""
@@ -17,13 +16,18 @@ function convertToCSV<TData>(data: TData[]): string {
 
     const headers = Object.keys(data[0] as object)
     const rows = data.map(obj =>
-        // headers.map(header => JSON.stringify((obj as any)[header])).join(',')
         headers.map(header => JSON.stringify((obj as Record<string, unknown>)[header])).join(',')
     )
 
     return [headers.join(','), ...rows].join('\n')
 }
 
+/**
+ * DataTableDownloadRows component allows downloading selected rows of a data table as a CSV file.
+ * @param table
+ * @param fileName
+ * @constructor
+ */
 export default function DataTableDownloadRows<TData>({table, fileName = "data"}: DataTableDownloadRowsProps<TData>) {
 
     const handleDownload = () => {

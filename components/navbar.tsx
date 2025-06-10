@@ -14,11 +14,12 @@ import {
 import Link from "next/link"
 import {Github} from "lucide-react";
 import { usePathname } from "next/navigation";
+import { ModeToggle } from "@/components/mode-toggle";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   { href: "/", label: "Client Side" },
-  { href: "/tablecn", label: "Tablecn" },
+  { href: "/ssr", label: "Server Side" },
 ]
 
 export default function Component() {
@@ -108,6 +109,7 @@ export default function Component() {
         {/* Right side */}
         <div className="flex items-center gap-2">
             <Link href="https://github.com/ekovegeance/tablecn"><Github size={20}/></Link>
+          <ModeToggle/>
         </div>
       </div>
     </header>

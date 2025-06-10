@@ -14,6 +14,12 @@ import {
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
 }
+
+/**
+ * DataTableDeleteRows component provides a button to delete selected rows in a data table.
+ * @param table
+ * @constructor
+ */
 export default function DataTableDeleteRows<TData>({table}: DataTableToolbarProps<TData>) {
     // const [data, setData] = useState<Item[]>([])
     // const handleDeleteRows = () => {

@@ -20,6 +20,13 @@ interface DataTableRowActionsProps<TData> {
     row: Row<TData>
 }
 
+/**
+ * DataTableRowActions component
+ * This component provides a dropdown menu for actions on a row in a data table.
+ * It includes options to show, edit, and delete the row data.
+ * @param row
+ * @constructor
+ */
 export function DataTableRowActions<TData extends Row<unknown>>({row}: DataTableRowActionsProps<TData>) {
     const rowData = row.original
     const [editOpen, setEditOpen] = useState(false)

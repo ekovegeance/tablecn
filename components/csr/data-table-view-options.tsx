@@ -18,7 +18,14 @@ interface DataTableViewOptionsProps<TData> {
     table: Table<TData>
 }
 
-export function DataTableViewOptions<TData>({table,}: DataTableViewOptionsProps<TData>) {
+/**
+ * DataTableViewOptions component
+ * This component provides a dropdown menu for toggling the visibility of columns in a data table.
+ * It allows users to show or hide columns based on their preferences.
+ * @param table
+ * @constructor
+ */
+export function DataTableViewOptions<TData>({table}: DataTableViewOptionsProps<TData>) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>

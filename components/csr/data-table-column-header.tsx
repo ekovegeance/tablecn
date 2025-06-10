@@ -17,6 +17,15 @@ interface DataTableColumnHeaderProps<TData, TValue>
     title: string
 }
 
+/**
+ * DataTableColumnHeader component
+ * @param column
+ * @param title
+ * @param className
+ * @constructor
+ * This component renders a column header for a data table with sorting and visibility options.
+ * It uses a dropdown menu to allow users to sort the column in ascending or descending order, or hide the column.
+ */
 export function DataTableColumnHeader<TData, TValue>({column, title, className,}: DataTableColumnHeaderProps<TData, TValue>) {
     if (!column.getCanSort()) {
         return <div className={cn(className)}>{title}</div>

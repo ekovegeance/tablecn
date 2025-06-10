@@ -10,6 +10,14 @@ interface DataTableToolbarProps<TData> {
     table: Table<TData>
 }
 
+/**
+ * DataTableActionToolbar component provides a toolbar for actions on selected rows in a data table.
+ * It allows users to clear selection, download selected rows, and delete selected rows.
+ * @param table
+ * @constructor
+ * @example
+ * <DataTableActionToolbar table={table} />
+ */
 export default function DataTableActionToolbar<TData>({table}: DataTableToolbarProps<TData>) {
     const onClearSelection = useCallback(() => {
         table.toggleAllRowsSelected(false);
@@ -29,7 +37,7 @@ export default function DataTableActionToolbar<TData>({table}: DataTableToolbarP
                             <XIcon size={14} aria-hidden="true"/>
                         </button>
                     </Badge>
-                    <DataTableDownloadRows table={table} fileName="selected_posts"/>
+                    <DataTableDownloadRows table={table} fileName="selected"/>
                     <DataTableDeleteRows table={table}/>
                 </>
 

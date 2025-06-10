@@ -1,7 +1,7 @@
 import React from 'react';
 import {getPosts} from "@/lib/data/posts";
 import {DataTable} from "@/components/csr/data-table";
-import {columns} from "@/components/csr/columns";
+import {columns} from "@/components/posts/posts-table-columns";
 import Link from "next/link";
 
 export default async function CSRPage() {
@@ -14,7 +14,7 @@ export default async function CSRPage() {
                     <div>
                         <h2 className="text-2xl font-bold tracking-tight">Client Side Rendering</h2>
                         <p className="text-muted-foreground">
-                            Example of a client-side rendered data table using dummyjson.com API. Here&apos;s a list of your posts!
+                            Example of a client-side rendered data table using <Link href="https://dummyjson.apidog.io/" className="underline cursor-pointer text-primary">dummyjson API</Link> . Here&apos;s a list of your posts!
                         </p>
                         <Link href="https://ui.shadcn.com/docs/components/data-table">Shadcn/ui Data Table</Link>
                     </div>

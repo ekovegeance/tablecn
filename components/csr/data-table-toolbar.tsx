@@ -15,6 +15,12 @@ interface DataTableToolbarProps<TData> {
     table: Table<TData>
 }
 
+/**
+ * DataTableToolbar component provides a toolbar for the data table,
+ * including search functionality, column visibility toggling, and action buttons.
+ * @param table
+ * @constructor
+ */
 export function DataTableToolbar<TData>({table}: DataTableToolbarProps<TData>) {
     const [filterValue, setFilterValue] = useState("")
     const [debouncedFilterValue] = useDebounce(filterValue, 300)
@@ -60,7 +66,7 @@ export function DataTableToolbar<TData>({table}: DataTableToolbarProps<TData>) {
                 {/* Add Item Button */}
                 <Button className="w-fit">
                     <Plus/>
-                    Add Item
+                    Add Post
                 </Button>
             </div>
 
