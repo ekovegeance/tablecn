@@ -29,7 +29,7 @@ export default function DataTableActionToolbar<TData>({table}: DataTableToolbarP
                             <XIcon size={14} aria-hidden="true"/>
                         </button>
                     </Badge>
-                    <DataTableDownloadRows table={table} fileName="selected_users"/>
+                    <DataTableDownloadRows table={table} fileName="selected_posts"/>
                     <DataTableDeleteRows table={table}/>
                 </>
 
