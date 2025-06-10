@@ -2,7 +2,7 @@
 import {ColumnDef} from "@tanstack/react-table";
 import {Checkbox} from "@/components/ui/checkbox";
 import {Post} from "@/lib/data/schema";
-import {DataTableColumnHeader} from "@/components/tablecn/data-table-column-header";
+import {DataTableColumnHeader} from "@/components/csr/data-table-column-header";
 import {DataTableRowActions} from "@/components/csr/data-table-row-actions";
 import {Badge} from "@/components/ui/badge";
 

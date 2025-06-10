@@ -5,11 +5,11 @@ import {CircleXIcon, ListFilterIcon, Plus} from "lucide-react"
 
 
 import {Input} from "@/components/ui/input"
-import {DataTableViewOptions} from "@/components/tablecn/data-table-view-options";
-import {useEffect, useState} from "react";
+import {DataTableViewOptions} from "@/components/csr/data-table-view-options";
+import React, {useEffect, useState} from "react";
 import {Button} from "@/components/ui/button";
-import DataTableDeleteRows from "@/components/csr/data-table-delete-rows";
 import {useDebounce} from "use-debounce";
+import DataTableActionToolbar from "@/components/csr/data-table-action-toolbar";
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
@@ -54,11 +54,9 @@ export function DataTableToolbar<TData>({table}: DataTableToolbarProps<TData>) {
                 {/* Toggle columns visibility */}
                 <DataTableViewOptions table={table}/>
             </div>
-            <div className="w-full md:w-auto flex gap-2 justify-end">
-                {/*Delete rows*/}
-                {table.getSelectedRowModel().rows.length > 0 && (
-                    <DataTableDeleteRows table={table}/>
-                )}
+            <div className="w-full md:w-auto flex gap-2 justify-end items-center">
+                {/*Action Toolbar*/}
+                <DataTableActionToolbar table={table}/>
                 {/* Add Item Button */}
                 <Button className="w-fit">
                     <Plus/>

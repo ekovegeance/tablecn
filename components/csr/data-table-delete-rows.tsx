@@ -27,13 +27,10 @@ export default function DataTableDeleteRows<TData>({table}: DataTableToolbarProp
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button className="ml-auto" variant="destructive">
+                <Button variant="destructive" size="icon">
                     <TrashIcon
-                        className="-ms-1 "
-                        size={16}
                         aria-hidden="true"
                     />
-                    {table.getSelectedRowModel().rows.length}
                 </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
