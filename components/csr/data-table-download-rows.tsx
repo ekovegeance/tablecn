@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button"
 
 interface DataTableDownloadRowsProps<TData> {
     table: Table<TData>
-    fileName?: string // Nama file (opsional)
+    fileName?: string
 }
 
-// Fungsi helper untuk mengubah array of object menjadi string CSV
+
 function convertToCSV<TData>(data: TData[]): string {
     if (data.length === 0) {
         return ""
@@ -17,7 +17,8 @@ function convertToCSV<TData>(data: TData[]): string {
 
     const headers = Object.keys(data[0] as object)
     const rows = data.map(obj =>
-        headers.map(header => JSON.stringify((obj as any)[header])).join(',')
+        // headers.map(header => JSON.stringify((obj as any)[header])).join(',')
+        headers.map(header => JSON.stringify((obj as Record<string, unknown>)[header])).join(',')
     )
 
     return [headers.join(','), ...rows].join('\n')
