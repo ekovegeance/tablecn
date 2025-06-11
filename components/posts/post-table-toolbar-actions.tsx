@@ -1,9 +1,10 @@
 import React, {useCallback} from 'react';
 import {Table} from "@tanstack/react-table";
-import DataTableDownloadRows from "@/components/csr/data-table-download-rows";
-import DataTableDeleteRows from "@/components/csr/data-table-delete-rows";
+import DataTableDownloadRows from "@/components/data-table/data-table-download-rows";
+import DataTableDeleteRows from "@/components/data-table/data-table-delete-rows";
 import {Badge} from '@/components/ui/badge';
-import {XIcon} from 'lucide-react';
+import {Plus, XIcon} from 'lucide-react';
+import {Button} from "@/components/ui/button";
 
 
 interface DataTableToolbarProps<TData> {
@@ -18,7 +19,7 @@ interface DataTableToolbarProps<TData> {
  * @example
  * <DataTableActionToolbar table={table} />
  */
-export default function DataTableActionToolbar<TData>({table}: DataTableToolbarProps<TData>) {
+export default function PostTableToolbarActions<TData>({table}: DataTableToolbarProps<TData>) {
     const onClearSelection = useCallback(() => {
         table.toggleAllRowsSelected(false);
     }, [table]);
@@ -40,8 +41,15 @@ export default function DataTableActionToolbar<TData>({table}: DataTableToolbarP
                     <DataTableDownloadRows table={table} fileName="selected"/>
                     <DataTableDeleteRows table={table}/>
                 </>
-
             )}
+            <Button className="w-fit">
+                <Plus/>
+                Add Post
+            </Button>
+            {/**
+             * Other actions can be added here.
+             * For example, import, view, etc.
+             */}
         </div>
     );
 }

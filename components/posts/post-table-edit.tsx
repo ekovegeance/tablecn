@@ -19,7 +19,7 @@ interface DataTableRowEditProps<TData> {
 }
 
 
-export function DataTableRowEdit<TData>({open, onOpenChange, rowData,}: DataTableRowEditProps<TData>) {
+export function PostTableEdit<TData>({open, onOpenChange, rowData,}: DataTableRowEditProps<TData>) {
 
     const form = useForm<Post>({
         resolver: zodResolver(postSchema),

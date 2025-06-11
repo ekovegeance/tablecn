@@ -1,4 +1,4 @@
-import * as React from "react"
+import { ComponentType } from "react"
 import { Column } from "@tanstack/react-table"
 import { Check, PlusCircle } from "lucide-react"
 
@@ -22,13 +22,14 @@ import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
 import {Badge} from "@/components/ui/badge";
 
+
 interface DataTableFacetedFilterProps<TData, TValue> {
     column?: Column<TData, TValue>
     title?: string
     options: {
         label: string
         value: string
-        icon?: React.ComponentType<{ className?: string }>
+        icon?: ComponentType<{ className?: string }>
     }[]
 }
 

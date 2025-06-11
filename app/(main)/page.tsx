@@ -1,8 +1,8 @@
+"use server";
 import React from 'react';
 import {getPosts} from "@/lib/data/posts";
-import {DataTable} from "@/components/csr/data-table";
-import {columns} from "@/components/posts/posts-table-columns";
 import Link from "next/link";
+import { PostsTable } from '@/components/posts/post-table';
 
 export default async function CSRPage() {
     const posts = await getPosts();
@@ -21,7 +21,7 @@ export default async function CSRPage() {
                     <div className="flex items-center space-x-2">
                     </div>
                 </div>
-                <DataTable data={posts} columns={columns} />
+                <PostsTable data={posts} />
             </div>
         </>
     );

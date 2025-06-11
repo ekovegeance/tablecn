@@ -12,7 +12,7 @@ import {
     DropdownMenuShortcut,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import {DataTableRowEdit} from "@/components/csr/data-table-row-edit";
+import {PostTableEdit} from "@/components/posts/post-table-edit";
 import {useState} from "react";
 
 
@@ -53,7 +53,7 @@ export function DataTableRowActions<TData extends Row<unknown>>({row}: DataTable
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
-            <DataTableRowEdit
+            <PostTableEdit
                 open={editOpen}
                 onOpenChange={setEditOpen}
                 rowData={ rowData }

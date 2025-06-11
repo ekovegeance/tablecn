@@ -3,13 +3,11 @@
 import {Table} from "@tanstack/react-table"
 import {CircleXIcon, ListFilterIcon, Plus} from "lucide-react"
 
-
 import {Input} from "@/components/ui/input"
-import {DataTableViewOptions} from "@/components/csr/data-table-view-options";
+import {DataTableViewOptions} from "@/components/data-table/data-table-view-options";
 import React, {useEffect, useState} from "react";
-import {Button} from "@/components/ui/button";
 import {useDebounce} from "use-debounce";
-import DataTableActionToolbar from "@/components/csr/data-table-action-toolbar";
+import PostTableToolbarActions from "@/components/posts/post-table-toolbar-actions";
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
@@ -61,15 +59,9 @@ export function DataTableToolbar<TData>({table}: DataTableToolbarProps<TData>) {
                 <DataTableViewOptions table={table}/>
             </div>
             <div className="w-full md:w-auto flex gap-2 justify-end items-center">
-                {/*Action Toolbar*/}
-                <DataTableActionToolbar table={table}/>
-                {/* Add Item Button */}
-                <Button className="w-fit">
-                    <Plus/>
-                    Add Post
-                </Button>
+                {/*Action Toolbar Action*/}
+                <PostTableToolbarActions table={table}/>
             </div>
-
         </div>
     )
 }
