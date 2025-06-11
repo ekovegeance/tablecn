@@ -19,7 +19,7 @@ interface DataTableToolbarProps<TData> {
  * @example
  * <DataTableActionToolbar table={table} />
  */
-export default function PostTableToolbarActions<TData>({table}: DataTableToolbarProps<TData>) {
+export function PostTableToolbarActions<TData>({table}: DataTableToolbarProps<TData>) {
     const onClearSelection = useCallback(() => {
         table.toggleAllRowsSelected(false);
     }, [table]);

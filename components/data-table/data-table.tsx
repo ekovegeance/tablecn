@@ -1,6 +1,6 @@
 "use client";
 
-import  React, { useState } from "react"
+import React, { useState } from "react";
 import {
     ColumnDef,
     SortingState,
@@ -14,33 +14,29 @@ import {
     getPaginationRowModel,
     getSortedRowModel,
     useReactTable,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 
-import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table"
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table";
 
 interface DataTableProps<TData, TValue> {
-    columns: ColumnDef<TData, TValue>[]
-    data: TData[]
-    toolbar?: (table: TanstackTable<TData>) => React.ReactNode
-    pagination?: (table: TanstackTable<TData>) => React.ReactNode
+    columns: ColumnDef<TData, TValue>[];
+    data: TData[];
+    toolbar?: (table: TanstackTable<TData>) => React.ReactNode;
+    actionBar?: (table: TanstackTable<TData>) => React.ReactNode;
+    pagination?: (table: TanstackTable<TData>) => React.ReactNode;
 }
 
-/**
- * DataTable component for displaying tabular data with features like sorting, filtering, and pagination.
- * @param columns
- * @param data
- * @param toolbar Optional toolbar component for additional actions or filters.
- * @param pagination Optional pagination component for navigating through data.
- * @constructor
- * @example
- * <DataTable columns={columns} data={data} toolbar={DataTableToolbar} pagination={DataTablePagination} />
- */
-export function DataTable<TData, TValue>({columns, data, toolbar, pagination}: DataTableProps<TData, TValue>) {
-    const [rowSelection, setRowSelection] = useState({})
-    const [columnVisibility, setColumnVisibility] =
-        useState<VisibilityState>({})
-
-    const [sorting, setSorting] = useState<SortingState>([])
+export function DataTable<TData, TValue>({columns, data, toolbar, actionBar, pagination,}: DataTableProps<TData, TValue>) {
+    const [rowSelection, setRowSelection] = useState({});
+    const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
+    const [sorting, setSorting] = useState<SortingState>([]);
 
     const table = useReactTable({
         data,
@@ -60,13 +56,21 @@ export function DataTable<TData, TValue>({columns, data, toolbar, pagination}: D
         getSortedRowModel: getSortedRowModel(),
         getFacetedRowModel: getFacetedRowModel(),
         getFacetedUniqueValues: getFacetedUniqueValues(),
-    })
-
+    });
 
     return (
         <div className="space-y-4">
-            {/*<DataTableToolbar table={table} />*/}
-            {toolbar && toolbar(table)}
+            {(toolbar || actionBar) && (
+                <div className="flex flex-col-reverse gap-2 sm:flex-row items-center justify-between">
+                    <div className="flex flex-1 items-center space-x-2">
+                        {toolbar && toolbar(table)}
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        {actionBar && actionBar(table)}
+                    </div>
+                </div>
+            )}
+
             <div className="rounded-md border">
                 <Table>
                     <TableHeader>
@@ -82,7 +86,7 @@ export function DataTable<TData, TValue>({columns, data, toolbar, pagination}: D
                                                     header.getContext()
                                                 )}
                                         </TableHead>
-                                    )
+                                    );
                                 })}
                             </TableRow>
                         ))}
@@ -119,5 +123,5 @@ export function DataTable<TData, TValue>({columns, data, toolbar, pagination}: D
             </div>
             {pagination && pagination(table)}
         </div>
-    )
+    );
 }
