@@ -2,8 +2,8 @@
 import {ColumnDef} from "@tanstack/react-table";
 import {Checkbox} from "@/components/ui/checkbox";
 import {Post} from "@/lib/data/schema";
-import {DataTableColumnHeader} from "@/components/csr/data-table-column-header";
-import {DataTableRowActions} from "@/components/csr/data-table-row-actions";
+import {DataTableColumnHeader} from "@/components/data-table/data-table-column-header";
+import {DataTableRowActions} from "@/components/data-table/data-table-row-actions";
 import {Badge} from "@/components/ui/badge";
 
 export const columns: ColumnDef<Post>[] = [
