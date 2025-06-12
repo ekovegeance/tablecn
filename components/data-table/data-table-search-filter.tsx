@@ -12,6 +12,14 @@ interface DataTableSearchFilterProps<TData> {
     placeholder?: string
 }
 
+/**
+ * DataTableSearchFilter component
+ * This component provides a search filter for a specific column in the data table.
+ * @param table
+ * @param columnId
+ * @param placeholder
+ * @constructor
+ */
 export function DataTableSearchFilter<TData>({table, columnId, placeholder = `Filter by ${columnId}...`}: DataTableSearchFilterProps<TData>) {
 
     const column = table.getColumn(columnId);

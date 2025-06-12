@@ -1,42 +1,31 @@
-import {CircleAlertIcon, TrashIcon} from "lucide-react";
-import {Button} from "@/components/ui/button";
-import {Table} from "@tanstack/react-table";
+"use client";
+
+import { CircleAlertIcon, TrashIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Table } from "@tanstack/react-table";
 import {
     AlertDialog,
     AlertDialogAction,
     AlertDialogCancel,
-    AlertDialogContent, AlertDialogDescription, AlertDialogFooter,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger
 } from "@/components/ui/alert-dialog";
 
-interface DataTableToolbarProps<TData> {
-    table: Table<TData>
+interface DataTableDeleteRowsProps<TData> {
+    table: Table<TData>;
+    onDelete: () => void;
 }
 
-/**
- * DataTableDeleteRows component provides a button to delete selected rows in a data table.
- * @param table
- * @constructor
- */
-export default function DataTableDeleteRows<TData>({table}: DataTableToolbarProps<TData>) {
-    // const [data, setData] = useState<Item[]>([])
-    // const handleDeleteRows = () => {
-    //     const selectedRows = table.getSelectedRowModel().rows
-    //     const updatedData = data.filter(
-    //         (item) => !selectedRows.some((row) => row.original.id === item.id)
-    //     )
-    //     setData(updatedData)
-    //     table.resetRowSelection()
-    // }
+export default function DataTableDeleteRows<TData>({table, onDelete}: DataTableDeleteRowsProps<TData>) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
                 <Button variant="destructive" size="icon">
-                    <TrashIcon
-                        aria-hidden="true"
-                    />
+                    <TrashIcon aria-hidden="true" />
                 </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
@@ -63,7 +52,10 @@ export default function DataTableDeleteRows<TData>({table}: DataTableToolbarProp
                 </div>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction className="bg-destructive focus:bg-destructive hover:bg-destructive" onClick={() => {}}>
+                    <AlertDialogAction
+                        className="bg-destructive hover:bg-destructive/90 focus:ring-destructive/40"
+                        onClick={onDelete}
+                    >
                         Delete
                     </AlertDialogAction>
                 </AlertDialogFooter>

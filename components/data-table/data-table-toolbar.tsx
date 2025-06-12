@@ -9,6 +9,14 @@ interface DataTableToolbarProps<TData> {
     primaryFilter?: React.ReactNode;
 }
 
+/**
+ * DataTableToolbar component
+ * This component provides a toolbar for the data table, allowing users to interact with the table.
+ * @param table
+ * @param primaryFilter
+ * @constructor
+ */
+
 export function DataTableToolbar<TData>({ table, primaryFilter }: DataTableToolbarProps<TData>) {
     return (
         <div className="flex items-center gap-3">

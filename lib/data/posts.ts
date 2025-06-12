@@ -1,5 +1,4 @@
-import api from "@/lib/axios";
-
+import api from "@/lib/api";
 export async function getPosts() {
     try {
         const response = await api.get('posts', {
@@ -12,6 +11,18 @@ export async function getPosts() {
 
     }catch (error) {
         console.error("Error fetching posts:", error);
+        throw error; // Re-throw the error for further handling if needed
+    }
+}
+
+export async function deletePostByIds(ids: string[]) {
+    try {
+        const response = await api.delete('posts', {
+            data: { ids }
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error deleting posts:", error);
         throw error; // Re-throw the error for further handling if needed
     }
 }

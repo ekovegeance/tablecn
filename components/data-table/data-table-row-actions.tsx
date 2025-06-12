@@ -8,12 +8,20 @@ import {
     DropdownMenuContent,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import {ReactNode} from "react";
 
 interface DataTableRowActionsProps<TData> {
     row: Row<TData>
-    children: (row: Row<TData>) => React.ReactNode;
+    children: (row: Row<TData>) => ReactNode;
 }
 
+/**
+ * DataTableRowActions component
+ * This component provides a dropdown menu for row actions in a data table.
+ * @param row
+ * @param children
+ * @constructor
+ */
 export function DataTableRowActions<TData>({row, children}: DataTableRowActionsProps<TData>) {
     return (
         <DropdownMenu>

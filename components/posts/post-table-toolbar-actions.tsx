@@ -5,24 +5,33 @@ import DataTableDeleteRows from "@/components/data-table/data-table-delete-rows"
 import {Badge} from '@/components/ui/badge';
 import {Plus, XIcon} from 'lucide-react';
 import {Button} from "@/components/ui/button";
+import { toast } from 'sonner';
+import {deletePostByIds} from "@/lib/data/posts";
 
 
 interface DataTableToolbarProps<TData> {
     table: Table<TData>
 }
 
-/**
- * DataTableActionToolbar component provides a toolbar for actions on selected rows in a data table.
- * It allows users to clear selection, download selected rows, and delete selected rows.
- * @param table
- * @constructor
- * @example
- * <DataTableActionToolbar table={table} />
- */
+
 export function PostTableToolbarActions<TData>({table}: DataTableToolbarProps<TData>) {
     const onClearSelection = useCallback(() => {
         table.toggleAllRowsSelected(false);
     }, [table]);
+
+    const handleDeleteRows = async () => {
+        const selectedRows = table.getSelectedRowModel().rows;
+        const selectedIds = selectedRows.map(row => (row.original as { id: string }).id);
+
+        // TODO: Implement the logic to delete posts by IDs.
+        // Example: deletePostsByIds(selectedIds);
+       await deletePostByIds(selectedIds);
+
+        toast.success(`${selectedIds.length} row(s) deleted successfully!`, {
+            description: `IDs: ${selectedIds.join(", ")}`,
+        });
+        table.resetRowSelection();
+    };
 
     return (
         <div className="w-full md:w-auto flex gap-2 justify-end items-center">
@@ -39,7 +48,7 @@ export function PostTableToolbarActions<TData>({table}: DataTableToolbarProps<TD
                         </button>
                     </Badge>
                     <DataTableDownloadRows table={table} fileName="selected"/>
-                    <DataTableDeleteRows table={table}/>
+                    <DataTableDeleteRows table={table} onDelete={handleDeleteRows}/>
                 </>
             )}
             <Button className="w-fit">

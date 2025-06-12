@@ -61,7 +61,7 @@ export function DataTable<TData, TValue>({columns, data, toolbar, actionBar, pag
     return (
         <div className="space-y-4">
             {(toolbar || actionBar) && (
-                <div className="flex flex-col-reverse gap-2 sm:flex-row items-center justify-between">
+                <div className="flex flex-col-reverse gap-2 sm:flex-row  justify-between">
                     <div className="flex flex-1 items-center space-x-2">
                         {toolbar && toolbar(table)}
                     </div>
